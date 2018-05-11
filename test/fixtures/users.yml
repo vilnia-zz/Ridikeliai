@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  userName: lina
+  name: Lina
+  description: "Nauja klientė"
+
+two:
+  userName: tomas
+  name: Tomas
+  description: "Naujas klientas"
+
+three:
+  userName: algis
+  name: Algirdas
+  description: "Įsiskolinęs"
