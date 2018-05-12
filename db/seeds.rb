@@ -43,7 +43,7 @@ ingredients = Ingredient.create([{name: 'miltai',        description: 'pilno grÅ
 				   {name: 'vanduo',      description: 'Å¡varus vanduo'},
 				   {name: 'druska',      description: 'rupi druska'}])
 
-measurement_alloweds = Measurement_allowed.create([{ingredient_id: ingredients.find(1), measurement_id: measurements.find(1)},
+measurement_alloweds = MeasurementAllowed.create([{ingredient_id: ingredients.find(1), measurement_id: measurements.find(1)},
 						   {ingredient_id: ingredients.find(1), measurement_id: measurements.find(2)},
 						   {ingredient_id: ingredients.find(1), measurement_id: measurements.find(4)},
 						   {ingredient_id: ingredients.find(1), measurement_id: measurements.find(5)},
@@ -66,7 +66,7 @@ measurement_alloweds = Measurement_allowed.create([{ingredient_id: ingredients.f
 						   {ingredient_id: ingredients.find(9), measurement_id: measurements.find(2)},
 						   {ingredient_id: ingredients.find(9), measurement_id: measurements.find(9)}])
 
-ingredients_recipes = Ingredient_recipes.create([{ingredient_id: ingredients.find(1), recipe_id: 1,
+ingredients_recipes = IngredientRecipe.create([{ingredient_id: ingredients.find(1), recipe_id: 1,
 							measurement_id: measurements.find(1), quantity: 0.5},
 						 {ingredient_id: ingredients.find(7), recipe_id: 1,
 							measurement_id: measurements.find(8), quantity: 10},
@@ -95,7 +95,7 @@ ingredients_recipes = Ingredient_recipes.create([{ingredient_id: ingredients.fin
 						 {ingredient_id: ingredients.find(7), recipe_id: 4,
 							measurement_id: measurements.find(8), quantity: 50}])
 
-categories_recipes = Category_recipes.create([{category_id: categories.find(3), recipe_id: recipes.find(1)},
+categories_recipes = CategoryRecipe.create([{category_id: categories.find(3), recipe_id: recipes.find(1)},
 					      {category_id: categories.find(1), recipe_id: recipes.find(2)},
 					      {category_id: categories.find(3), recipe_id: recipes.find(3)},
 					      {category_id: categories.find(2), recipe_id: recipes.find(4)},
