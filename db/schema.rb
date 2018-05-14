@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180511114428) do
+ActiveRecord::Schema.define(version: 20180511064351) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -28,16 +28,16 @@ ActiveRecord::Schema.define(version: 20180511114428) do
     t.index ["recipe_id"], name: "index_category_recipes_on_recipe_id", using: :btree
   end
 
-  create_table "ingredient_recipes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ingredient_measurement_recipes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "ingredient_id"
     t.integer  "measurement_id"
     t.integer  "recipe_id"
     t.decimal  "quantity",       precision: 10
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.index ["ingredient_id"], name: "index_ingredient_recipes_on_ingredient_id", using: :btree
-    t.index ["measurement_id"], name: "index_ingredient_recipes_on_measurement_id", using: :btree
-    t.index ["recipe_id"], name: "index_ingredient_recipes_on_recipe_id", using: :btree
+    t.index ["ingredient_id"], name: "index_ingredient_measurement_recipes_on_ingredient_id", using: :btree
+    t.index ["measurement_id"], name: "index_ingredient_measurement_recipes_on_measurement_id", using: :btree
+    t.index ["recipe_id"], name: "index_ingredient_measurement_recipes_on_recipe_id", using: :btree
   end
 
   create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -45,15 +45,6 @@ ActiveRecord::Schema.define(version: 20180511114428) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "measurement_alloweds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "ingredient_id"
-    t.integer  "measurement_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["ingredient_id"], name: "index_measurement_alloweds_on_ingredient_id", using: :btree
-    t.index ["measurement_id"], name: "index_measurement_alloweds_on_measurement_id", using: :btree
   end
 
   create_table "measurements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -84,10 +75,8 @@ ActiveRecord::Schema.define(version: 20180511114428) do
 
   add_foreign_key "category_recipes", "categories"
   add_foreign_key "category_recipes", "recipes"
-  add_foreign_key "ingredient_recipes", "ingredients"
-  add_foreign_key "ingredient_recipes", "measurements"
-  add_foreign_key "ingredient_recipes", "recipes"
-  add_foreign_key "measurement_alloweds", "ingredients"
-  add_foreign_key "measurement_alloweds", "measurements"
+  add_foreign_key "ingredient_measurement_recipes", "ingredients"
+  add_foreign_key "ingredient_measurement_recipes", "measurements"
+  add_foreign_key "ingredient_measurement_recipes", "recipes"
   add_foreign_key "recipes", "users"
 end
